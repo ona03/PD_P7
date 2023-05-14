@@ -31,7 +31,7 @@ out -> SetGain(0.125);
 out -> SetPinout(26,25,22);
 aac->begin(in, out);
 ```
-Dentro del `loop()`, damos una sola condición: mientras el generador de audio (`acc`) se esté ejecutando, que se siga ejecutando; en el momento que eso no se cumpla, detenemos la ejecución de la variable e imprimimos `Sound Generator`.
+Dentro del `loop()`, damos una sola condición: mientras el generador de audio (`acc`) se esté ejecutando, que se siga ejecutando; en el momento que eso no se cumpla, detenemos la ejecución de la variable e imprimimos `Sound Generator` en bucle.
 ```cpp
 if (aac->isRunning()) {
     aac->loop();
@@ -77,7 +77,11 @@ void loop(){
 ```
 Con una salida:
 ```cpp
-
+Sound Generator
+Sound Generator
+Sound Generator
+...
+Sound Generator
 ```
 ### Diagrama de flujo
 ```mermaid
@@ -120,7 +124,7 @@ Serial.begin(115200);
 SD.begin(SD_CS);
 audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
 audio.setVolume(10); // 0...21
-audio.connecttoFS(SD, "Ensoniq-ZR-76-01-Dope-77.wav");
+audio.connecttoFS(SD, "STAY_HOMAS_quiero_mas.mp3");
 ```
 En el bucle, reproducimos infinitamente el fichero de audio. Si nos interesa, podemos dar uso a las funciones que se plantean a continuación, que muestran por el terminal distintas propiedades del fichero que estamos reproduciendo, por ejemplo el artista, la duración del audio, el título... Por lo tanto, el código entero es el siguiente:
 ```cpp
@@ -147,7 +151,7 @@ void setup(){
     SD.begin(SD_CS);
     audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
     audio.setVolume(10); // 0...21
-    audio.connecttoFS(SD, "Ensoniq-ZR-76-01-Dope-77.wav");
+    audio.connecttoFS(SD, "STAY_HOMAS_quiero_mas.mp3");
 }
 void loop(){
     audio.loop();
@@ -186,6 +190,36 @@ void audio_lasthost(const char *info){ //stream URL played
 void audio_eof_speech(const char *info){
     Serial.print("eof_speech ");Serial.println(info);
 }
+```
+Y la salida:
+```cpp
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13104
+load:0x40080400,len:3036
+entry 0x400805e4
+info PSRAM not found, inputBufferSize: 6399 bytes
+info buffers freed, free Heap: 240800 bytes
+info Reading file: "/STAY_HOMAS_quiero_mas.mp3"
+info MP3Decoder has been initialized, free Heap: 212968 bytes
+info Content-Length: 3160744
+info ID3 framesSize: 138
+info ID3 version: 2.4
+info ID3 normal frames
+id3data UserDefinedText: major_branddash
+id3data UserDefinedText: minor_version0
+id3data UserDefinedText: compatible_brandsiso6mp41
+id3data SettingsForEncoding: Lavf59.27.100
+info Audio-Length: 3160606
+info stream ready
+info syncword found at pos 0
+info Channels: 2
+info SampleRate: 44100
+info BitsPerSample: 16
+info BitRate: 128000
 ```
 ### Diagrama de flujo
 ```mermaid

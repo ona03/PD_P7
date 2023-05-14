@@ -25,7 +25,7 @@ void loop(){
     } 
     else {
         aac -> stop();
-        Serial.printf("Sound Generator\n");
+        Serial.print("Sound Generator\n");
         delay(1000);
     }
 }
@@ -53,7 +53,7 @@ void setup(){
     SD.begin(SD_CS);
     audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
     audio.setVolume(10); // 0...21
-    audio.connecttoFS(SD, "Ensoniq-ZR-76-01-Dope-77.wav");
+    audio.connecttoFS(SD, "STAY_HOMAS_quiero_mas.mp3");
 }
 void loop(){
     audio.loop();
