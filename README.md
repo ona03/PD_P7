@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Procesadores digitales
 
 <div align="justify">
@@ -196,3 +197,6 @@ flowchart TD;
     E-->F[Seleccionamos fichero de audio que queremos reproducir];
     F-->G[Reproducimos el archivo en bucle];
 ```
+=======
+# PD_P7
+>>>>>>> 79dabc2767953b63deadeac72fd774e4711fa076
