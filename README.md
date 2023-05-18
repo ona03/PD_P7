@@ -93,6 +93,8 @@ flowchart TD;
     G-->F; 
     F-- no --> H[Detén la generación de audio];
 ```
+### Montaje
+<image src='images/i2s_intern.jpg' alt='i2s_int' width='400'>
 
 ## Reproducción desde tarjeta SD externa
 
@@ -193,14 +195,6 @@ void audio_eof_speech(const char *info){
 ```
 Y la salida:
 ```cpp
-rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
-configsip: 0, SPIWP:0xee
-clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
-mode:DIO, clock div:2
-load:0x3fff0030,len:1184
-load:0x40078000,len:13104
-load:0x40080400,len:3036
-entry 0x400805e4
 info PSRAM not found, inputBufferSize: 6399 bytes
 info buffers freed, free Heap: 240800 bytes
 info Reading file: "/STAY_HOMAS_quiero_mas.mp3"
@@ -230,3 +224,5 @@ flowchart TD;
     E-->F[Seleccionamos fichero de audio que queremos reproducir];
     F-->G[Reproducimos el archivo en bucle];
 ```
+### Montaje
+<image src='images/i2s_ext.jpg' alt='i2s_ext' width='400'>
